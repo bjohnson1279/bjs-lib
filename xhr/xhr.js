@@ -1,4 +1,4 @@
-class XHR extends XMLHttpRequest {
+export class XHR extends XMLHttpRequest {
     // Wrapper class for XMLHttpRequest
     constructor(method = 'GET', resType = 'innerHTML') {
         super();
