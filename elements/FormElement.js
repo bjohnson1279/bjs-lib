@@ -1,4 +1,4 @@
-export class FormElement extends HTMLFormElement {
+export default class FormElement extends HTMLFormElement {
     constructor(method = 'POST', action = '', id = '') {
         super();
         this.method = method;

@@ -1,4 +1,4 @@
-export class TableCellElement extends HTMLTableCellElement {
+export default class TableCellElement extends HTMLTableCellElement {
     constructor(id, name = '', val = '') {
         super();
         this.name = name;

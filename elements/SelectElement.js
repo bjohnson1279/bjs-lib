@@ -1,4 +1,4 @@
-export class SelectElement extends HTMLSelectElement {
+export default class SelectElement extends HTMLSelectElement {
     constructor(id, name = '', val = '') {
         super();
         this.name = name;
