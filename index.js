@@ -12,13 +12,19 @@ window.addEventListener('load', () => {
     console.log('inside body.onload');
 
     const mainDiv = new DivElement('mainDiv');
-    const mainDivHeaderTxt = new SpanElement('headerTxt')
+    const mainDivBody = new DivElement('mainDivBody');
+    const mainDivHeaderTxt = new SpanElement('headerTxt');
+    const mainDivBodyTxt = new SpanElement('bodyTxt');
     const custom = new CustomElement('customElement');
 
-    mainDivHeaderTxt.setText('Main Div');
+    mainDivHeaderTxt.setText('Main Div Header');
+    mainDivBodyTxt.setText('Main Div Body');
+    mainDivBody.appendChild(mainDivBodyTxt);
     mainDiv.appendChild(mainDivHeaderTxt);
+    mainDiv.appendChild(mainDivBody);
     body.appendChild(mainDiv);
     console.log('mainDiv', mainDiv);
     console.log('mainDivHeaderTxt', mainDivHeaderTxt);
+    console.log('mainDivBody', mainDivBody);
     console.log('custom', custom);
 });
