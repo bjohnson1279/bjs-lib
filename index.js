@@ -7,9 +7,10 @@ import TableRowElement from './elements/TableRowElement.js';
 import TableCellElement from './elements/TableCellElement.js';
 import InputElement from './elements/InputElement.js';
 import ButtonElement from './elements/ButtonElement.js';
+import { STATES } from './exports/states.js';
 
+console.log('states', STATES);
 function $(x) { return document.getElementById(x); } 
-// customElements.define('main-div', DivElement, { extends: 'div' });
 
 const body = document.getElementsByTagName('body')[0];
 console.log('body', body);
@@ -90,6 +91,7 @@ window.addEventListener('load', () => {
     }
 
     mainDivFormSubmit.onclick = (e) => {
+        // TODO : serialize form data inputs to JSON format
         let formdata = new FormData(mainDivForm);
         console.log('form data:', formdata);
     };
