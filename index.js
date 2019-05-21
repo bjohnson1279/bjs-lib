@@ -6,10 +6,15 @@ import TableElement from './elements/TableElement.js';
 import TableRowElement from './elements/TableRowElement.js';
 import TableCellElement from './elements/TableCellElement.js';
 import InputElement from './elements/InputElement.js';
+import SelectElement from './elements/SelectElement.js';
+import OptionElement from './elements/OptionElement.js';
 import ButtonElement from './elements/ButtonElement.js';
-import { STATES } from './exports/states.js';
+import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js';
 
-console.log('states', STATES);
+// console.log('states', STATES);
+// console.log('canada provinces', CANADA_PROVINCES);
+// console.log('mexico provinces', MEXICO_PROVINCES);
+
 function $(x) { return document.getElementById(x); } 
 
 const body = document.getElementsByTagName('body')[0];
@@ -42,6 +47,31 @@ window.addEventListener('load', () => {
     const mainDivTableEmailInputCell = new TableCellElement('mainDivTableEmailInputCell');
     const mainDivTableEmailInput = new InputElement('mainDivTableEmailInput', null, 'email');
 
+    const mainDivTableAddressRow = new TableRowElement('mainDivTableAddressRow');
+    const mainDivTableAddressTitle = new TableCellElement('mainDivTableAddressTitle');
+    const mainDivTableAddressInputCell = new TableCellElement('mainDivTableAddressInputCell');
+    const mainDivTableAddressInput = new InputElement('mainDivTableAddressInput');
+
+    const mainDivTableCityRow = new TableRowElement('mainDivTableCityRow');
+    const mainDivTableCityTitle = new TableCellElement('mainDivTableCityTitle');
+    const mainDivTableCityInputCell = new TableCellElement('mainDivTableCityInputCell');
+    const mainDivTableCityInput = new InputElement('mainDivTableCityInput');
+
+    const mainDivTableStateRow = new TableRowElement('mainDivTableStateRow');
+    const mainDivTableStateTitle = new TableCellElement('mainDivTableStateTitle');
+    const mainDivTableStateSelectCell = new TableCellElement('mainDivTableStateSelectCell');
+    const mainDivTableStateSelect = new SelectElement('mainDivTableStateSelect');
+    mainDivTableStateSelect.appendChild(new OptionElement('', ''));
+
+    Object.keys(STATES).forEach(abbr => {
+        mainDivTableStateSelect.appendChild(new OptionElement(abbr, STATES[abbr]));
+    });
+
+    const mainDivTableZipRow = new TableRowElement('mainDivTableZipRow');
+    const mainDivTableZipTitle = new TableCellElement('mainDivTableZipTitle');
+    const mainDivTableZipInputCell = new TableCellElement('mainDivTableZipInputCell');
+    const mainDivTableZipInput = new InputElement('mainDivTableZipInput');
+
     const mainDivFormSubmit = new ButtonElement('mainDivFormSubmit', 'submit', 'Submit');
 
     mainDivTableHeaderCell.setAttribute('colspan', 2);
@@ -60,6 +90,22 @@ window.addEventListener('load', () => {
     mainDivTableEmailTitle.style.fontWeight = 'bold';
     mainDivTableEmailInputCell.appendChild(mainDivTableEmailInput);
 
+    mainDivTableAddressTitle.setText('Address');
+    mainDivTableAddressTitle.style.fontWeight = 'bold';
+    mainDivTableAddressInputCell.appendChild(mainDivTableAddressInput);
+
+    mainDivTableCityTitle.setText('City');
+    mainDivTableCityTitle.style.fontWeight = 'bold';
+    mainDivTableCityInputCell.appendChild(mainDivTableCityInput);
+
+    mainDivTableStateTitle.setText('State');
+    mainDivTableStateTitle.style.fontWeight = 'bold';
+    mainDivTableStateSelectCell.appendChild(mainDivTableStateSelect);
+
+    mainDivTableZipTitle.setText('Zip');
+    mainDivTableZipTitle.style.fontWeight = 'bold';
+    mainDivTableZipInputCell.appendChild(mainDivTableZipInput);
+
     mainDivTableHeaderRow.appendChild(mainDivTableHeaderCell);
 
     mainDivTableFirstNameRow.appendChild(mainDivTableFirstNameTitle);
@@ -71,10 +117,26 @@ window.addEventListener('load', () => {
     mainDivTableEmailRow.appendChild(mainDivTableEmailTitle);
     mainDivTableEmailRow.appendChild(mainDivTableEmailInputCell);
 
+    mainDivTableAddressRow.appendChild(mainDivTableAddressTitle);
+    mainDivTableAddressRow.appendChild(mainDivTableAddressInputCell);
+
+    mainDivTableCityRow.appendChild(mainDivTableCityTitle);
+    mainDivTableCityRow.appendChild(mainDivTableCityInputCell);
+
+    mainDivTableStateRow.appendChild(mainDivTableStateTitle);
+    mainDivTableStateRow.appendChild(mainDivTableStateSelectCell);
+
+    mainDivTableZipRow.appendChild(mainDivTableZipTitle);
+    mainDivTableZipRow.appendChild(mainDivTableZipInputCell);
+
     mainDivTable.appendChild(mainDivTableHeaderRow);
     mainDivTable.appendChild(mainDivTableFirstNameRow);
     mainDivTable.appendChild(mainDivTableLastNameRow);
     mainDivTable.appendChild(mainDivTableEmailRow);
+    mainDivTable.appendChild(mainDivTableAddressRow);
+    mainDivTable.appendChild(mainDivTableCityRow);
+    mainDivTable.appendChild(mainDivTableStateRow);
+    mainDivTable.appendChild(mainDivTableZipRow);
     mainDivForm.appendChild(mainDivTable);
     mainDivForm.appendChild(mainDivFormSubmit);
 
@@ -97,9 +159,9 @@ window.addEventListener('load', () => {
     };
 
     console.log('mainDiv', mainDiv);
-    console.log('mainDivHeaderTxt', mainDivHeaderTxt);
+    // console.log('mainDivHeaderTxt', mainDivHeaderTxt);
     console.log('mainDivBody', mainDivBody);
-    console.log('mainDivForm', mainDivForm);
-    console.log('mainDivTable', mainDivTable);
+    // console.log('mainDivForm', mainDivForm);
+    // console.log('mainDivTable', mainDivTable);
     console.log('custom', custom);
 });
