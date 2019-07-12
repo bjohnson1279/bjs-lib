@@ -27,23 +27,6 @@ export class XHR extends XMLHttpRequest {
     }
 
     exec() {
-        this.open(this._method, this._url, true);
-        this.onreadystatechange = () => {
-            if (this.readyState == 4 && this.status == 200) {
-                // handle response
-                switch (this._responseType) {
-                    case 'JSON':
-                        // JSON parsing and handling
-                        this.responseData = this.response.json();
-                        break;
-                    case 'XML':
-                        this.responseData = this.responseXML;
-                        break;
-                    case 'innerHTML':
-                        this.responseData = this.responseText;
-                        break;
-                }
-            }
-        }
+	const res = fetch(this._url);
     }
 }
