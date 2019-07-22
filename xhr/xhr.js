@@ -4,6 +4,7 @@ export class XHR extends XMLHttpRequest {
         super();
         this._method = method;
         this._responseType = resType;
+        this._headers = [];
     }
 
     set requestData(reqData) {
@@ -14,11 +15,15 @@ export class XHR extends XMLHttpRequest {
         this._responseType = resType;
     }
 
+    set headers(hstr) {
+        this._headers.push(hstr);
+    }
+
     set method(method) {
         this._method = method;
     }
 
-    set url (url) {
+    set url(url) {
         this._url = url;
     }
 
@@ -27,6 +32,13 @@ export class XHR extends XMLHttpRequest {
     }
 
     exec() {
-	const res = fetch(this._url);
+        params = {
+            method: this._method,
+            cache: 'no-cache',
+        };
+        const res = fetch(this._url, params)
+            .then(response => {
+                console.log({ response });
+            });
     }
 }
