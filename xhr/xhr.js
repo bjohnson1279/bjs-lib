@@ -4,7 +4,8 @@ export class XHR extends XMLHttpRequest {
         super();
         this._method = method;
         this._responseType = resType;
-        this._headers = [];
+        this._headers = new Headers();
+        this._formData = new FormData();
     }
 
     set requestData(reqData) {
@@ -15,8 +16,33 @@ export class XHR extends XMLHttpRequest {
         this._responseType = resType;
     }
 
-    set headers(hstr) {
-        this._headers.push(hstr);
+    set headers(name, val) {
+        const validTypes = [
+            'Cache-Control',
+            'Content-Language',
+            'Content-Type',
+            'Expires',
+            'Last-Modified',
+            'Pragma',
+        ];
+
+        if (validTypes.includes(name)) {
+            this._headers.set(name, val);
+        }
+        else {
+            const error = new Error('Invalid header type');
+            error.statusCode = 500;
+            throw error;
+        }
+    }
+
+    set formDataElem(sel) {
+        const elem = document.querySelector(sel);
+        this._formData.set(elem.name, elem.value);
+    }
+
+    set formData(name, val) {
+        this._formData.set(name, val);
     }
 
     set method(method) {
@@ -32,13 +58,16 @@ export class XHR extends XMLHttpRequest {
     }
 
     exec() {
-        params = {
+        let params = {
             method: this._method,
             cache: 'no-cache',
+            headers: this._headers,
         };
+
         const res = fetch(this._url, params)
             .then(response => {
                 console.log({ response });
-            });
+            })
+            .catch( (error) => console.error(error));
     }
 }
