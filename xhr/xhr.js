@@ -54,7 +54,11 @@ export class XHR extends XMLHttpRequest {
     }
 
     get responseData() {
-        return this.responseData;
+        return this._responseData;
+    }
+
+    set responseData(responseData) {
+        this._responseData = responseData;
     }
 
     exec() {
@@ -67,6 +71,7 @@ export class XHR extends XMLHttpRequest {
         const res = fetch(this._url, params)
             .then(response => {
                 console.log({ response });
+                this.responseData(response);
             })
             .catch( (error) => console.error(error));
     }
