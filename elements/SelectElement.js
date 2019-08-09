@@ -18,6 +18,14 @@ export default class SelectElement extends HTMLSelectElement {
     addOption(option) {
         this.appendChild(option);
     }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-select', SelectElement, { extends: 'select' });

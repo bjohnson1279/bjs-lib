@@ -11,13 +11,13 @@ import OptionElement from './elements/OptionElement.js';
 import ButtonElement from './elements/ButtonElement.js';
 import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js';
 
-// console.log('states', STATES);
-// console.log('canada provinces', CANADA_PROVINCES);
-// console.log('mexico provinces', MEXICO_PROVINCES);
+// console.log({ STATES });
+// console.log({ CANADA_PROVINCES });
+// console.log({ MEXICO_PROVINCES });
 
 function $(x) { return document.querySelector(x); } 
 
-const body = document.getElementsByTagName('body')[0];
+const body = document.querySelector('body')[0];
 console.log({ body });
 
 window.addEventListener('load', () => {
@@ -156,13 +156,13 @@ window.addEventListener('load', () => {
     mainDivFormSubmit.onclick = (e) => {
         // TODO : serialize form data inputs to JSON format
         let formdata = new FormData(mainDivForm);
-        console.log('form data:', formdata);
+        console.log({ formdata });
     };
 
-    console.log('mainDiv', mainDiv);
-    // console.log('mainDivHeaderTxt', mainDivHeaderTxt);
-    console.log('mainDivBody', mainDivBody);
-    // console.log('mainDivForm', mainDivForm);
-    // console.log('mainDivTable', mainDivTable);
-    console.log('custom', custom);
+    console.log({ mainDiv });
+    // console.log({ mainDivHeaderTxt });
+    console.log({ mainDivBody });
+    // console.log({ mainDivForm });
+    // console.log({ mainDivTable });
+    console.log({ custom });
 });

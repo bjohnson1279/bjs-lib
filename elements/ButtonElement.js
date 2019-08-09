@@ -7,6 +7,14 @@ export default class ButtonElement extends HTMLButtonElement {
         this.textContent = val;
         this.type = btnType;
     }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-button', ButtonElement, { extends: 'button' });

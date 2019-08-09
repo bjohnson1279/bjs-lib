@@ -9,6 +9,14 @@ export default class TableCellElement extends HTMLTableCellElement {
     setText(txt) {
         this.textContent = txt;
     }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-td', TableCellElement, { extends: 'td' });

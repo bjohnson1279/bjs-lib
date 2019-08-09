@@ -6,6 +6,14 @@ export default class InputElement extends HTMLInputElement {
         this.name = !name ? id : name;
         this.value = val;
     }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-input', InputElement, { extends: 'input' });

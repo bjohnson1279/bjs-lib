@@ -15,6 +15,18 @@ export default class SpanElement extends HTMLSpanElement {
     setText(txt) {
         this.textContent = txt;
     }
+
+    setDisplay(disp) {
+        this.style.display = disp;
+    }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-span', SpanElement, { extends: 'span' });

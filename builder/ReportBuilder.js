@@ -1,5 +1,12 @@
+import FieldAttributes from ('./FieldAttributes.js');
+
 export default class ReportBuilder {
     constructor() {
-        // TODO : build this
+        this.fields = [];
+        this.dataRows = [];
+    }
+
+    addNewField() {
+        fieldAttr = new FieldAttributes();
     }
 }
