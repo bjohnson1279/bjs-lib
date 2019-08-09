@@ -31,7 +31,7 @@ export class XHR extends XMLHttpRequest {
         }
         else {
             const error = new Error('Invalid header type');
-            error.statusCode = 500;
+            error.statusCode = 400;
             throw error;
         }
     }

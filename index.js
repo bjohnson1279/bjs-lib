@@ -15,10 +15,11 @@ import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js'
 // console.log('canada provinces', CANADA_PROVINCES);
 // console.log('mexico provinces', MEXICO_PROVINCES);
 
-function $(x) { return document.getElementById(x); } 
+function $(x) { return document.querySelector(x); } 
 
 const body = document.getElementsByTagName('body')[0];
-console.log('body', body);
+console.log({ body });
+
 window.addEventListener('load', () => {
     // Load body content here
     const mainDiv = new DivElement('mainDiv');

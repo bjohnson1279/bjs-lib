@@ -1,5 +1,5 @@
 export default class OptionElement extends HTMLOptionElement {
-   constructor(val = '', txt = '') {
+    constructor(val = '', txt = '') {
         super();
         this.value = val;
         this.text = txt;

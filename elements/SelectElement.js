@@ -9,6 +9,15 @@ export default class SelectElement extends HTMLSelectElement {
     setText(txt) {
         this.textContent = txt;
     }
+
+    addOptGroup(optGroup) {
+        // append options to optgroup first
+        this.appendChild(optGroup);
+    }
+
+    addOption(option) {
+        this.appendChild(option);
+    }
 }
 
 customElements.define('custom-select', SelectElement, { extends: 'select' });
