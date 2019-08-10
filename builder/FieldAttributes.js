@@ -1,5 +1,49 @@
 export class FieldAttributes {
-    constructor() {
+    constructor(name, value, type = '', id = '') {
         const numericTypes = ['int', 'float'];
+        const validTypes = numericTypes.concat(['string', 'boolean', 'date']);
+
+        this.name = name;
+        this.value = value;
+        this.type = type;
+        this.id = id !== '' ? id : name;
+
+        this.sort = false;
+        this.decimal = false;
+        this.dollar = false;
+        this.group = false;
+
+    }
+
+    isValid() {
+        if (!this.validTypes.includes(this.type)) {
+            return new Error('Invalid field type');
+        }
+        if (this.numericTypes.includes(this.type)) {
+            switch (this.type) {
+                case 'int':
+                    this.value = parseInt(this.value);
+                    break;
+                default:
+                    this.value = parseFloat(this.value);
+                    break;
+            }
+        }
+    }
+
+    set canSort(bool) {
+        this.sort = bool;
+    }
+
+    set isDecimal(bool) {
+        this.decimal = bool;
+    }
+
+    set isDollar(bool) {
+        this.dollar = bool;
+    }
+
+    set groupBy(bool) {
+        this.group = bool;
     }
 }

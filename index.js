@@ -17,7 +17,7 @@ import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js'
 
 function $(x) { return document.querySelector(x); } 
 
-const body = document.querySelector('body')[0];
+const body = document.getElementsByTagName('body')[0];
 console.log({ body });
 
 window.addEventListener('load', () => {
