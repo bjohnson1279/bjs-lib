@@ -20,6 +20,10 @@ export class FieldAttributes {
             return new Error('Invalid field type');
         }
         if (this.numericTypes.includes(this.type)) {
+            if (Number.isNaN(this.value)) {
+                return new Error(`Invalid value for type ${this.type}`);
+            }
+
             switch (this.type) {
                 case 'int':
                     this.value = parseInt(this.value);
