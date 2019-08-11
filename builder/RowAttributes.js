@@ -1,6 +1,6 @@
 export class RowAttributes {
-    constructor() {
-        this.indexField = null;
+    constructor(indexField) {
+        this.indexField = indexField;
         this.classes = [];
     }
 }

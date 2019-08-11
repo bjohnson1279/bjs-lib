@@ -1,6 +1,8 @@
 export class FieldAttributes {
     constructor(name, value, type = '', id = '') {
         const numericTypes = ['int', 'float'];
+        const validInputTypes = ['text', 'number'];
+        const validInputFields  = ['input', 'select', 'radio'];
         const validTypes = numericTypes.concat(['string', 'boolean', 'date']);
 
         this.name = name;
