@@ -1,4 +1,5 @@
 import FieldAttributes from ('./FieldAttributes.js');
+import FormElement from ('../elements/FormElement.js');
 
 export default class FormBuilder {
     constructor() {
@@ -8,5 +9,9 @@ export default class FormBuilder {
 
     addNewField() {
         fieldAttr = new FieldAttributes();
+    }
+
+    build(id, action, method = 'POST') {
+        const buildForm = new FormElement(id, action, method);
     }
 }

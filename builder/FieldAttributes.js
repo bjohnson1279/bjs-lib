@@ -8,7 +8,7 @@ export class FieldAttributes {
         this.type = type;
         this.id = id !== '' ? id : name;
 
-        this.sort = false;
+        this.sortable = false;
         this.decimal = false;
         this.dollar = false;
         this.group = false;
@@ -36,7 +36,7 @@ export class FieldAttributes {
     }
 
     set canSort(bool) {
-        this.sort = bool;
+        this.sortable = bool;
     }
 
     set isDecimal(bool) {
