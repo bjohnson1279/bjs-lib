@@ -1,8 +1,7 @@
 export default class DivElement extends HTMLDivElement {
-    constructor(id, name = '', val = '') {
+    constructor(id, name = '') {
         super();
         this.name = name;
-        this.value = val;
         this.id = id;
     }
 
