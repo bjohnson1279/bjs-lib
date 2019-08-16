@@ -25,7 +25,7 @@ export class FieldAttributes {
         }
         if (this.numericTypes.includes(this.type)) {
             if (Number.isNaN(this.value)) {
-                return new Error(`Invalid value for type ${this.type}`);
+                return new Error(`Invalid value ${this.value} for type ${this.type}`);
             }
 
             switch (this.type) {
