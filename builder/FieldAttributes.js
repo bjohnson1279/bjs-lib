@@ -1,10 +1,12 @@
 export class FieldAttributes {
     constructor(name, value, type = '', id = '') {
-        const numericTypes = ['int', 'float'];
-        const validInputTypes = ['text', 'number', 'radio', 'checkbox'];
+        const validInputTypes = ['text', 'number', 'email', 'date', 'hidden', 'password', 'search', 'submit', 'tel', 'url', 'radio', 'checkbox'];
         const validInputFields  = ['input', 'select'];
+
+        const numericTypes = ['int', 'float'];
         const validTypes = numericTypes.concat(['string', 'boolean', 'date']);
 
+        this.inputField = 'input';
         this.name = name;
         this.value = value;
         this.type = type;
@@ -19,7 +21,7 @@ export class FieldAttributes {
 
     isValid() {
         if (!this.validTypes.includes(this.type)) {
-            return new Error('Invalid field type');
+            return new Error(`Invalid field type ${this.type}`);
         }
         if (this.numericTypes.includes(this.type)) {
             if (Number.isNaN(this.value)) {
@@ -37,19 +39,28 @@ export class FieldAttributes {
         }
     }
 
+    set inputFieldType(type) {
+        if (this.validInputTypes(type)) {
+            this.inputField = type;
+        } 
+        else {
+            return new Error('Invalid input type');
+        }
+    }
+
     set canSort(bool) {
-        this.sortable = bool;
+        this.sortable = Boolean(bool);
     }
 
     set isDecimal(bool) {
-        this.decimal = bool;
+        this.decimal = Boolean(bool);
     }
 
     set isDollar(bool) {
-        this.dollar = bool;
+        this.dollar = Boolean(bool);
     }
 
     set groupBy(bool) {
-        this.group = bool;
+        this.group = Boolean(bool);
     }
 }

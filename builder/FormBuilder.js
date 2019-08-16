@@ -24,6 +24,11 @@ export default class FormBuilder {
 
     validateForm() {
         // TODO : Validate required fields and data types of fields for submission
+        this.fields.forEach( (field) => {
+            if (this.requiredFields.includes(field)) {
+                //
+            }
+        });
     }
 
     build(id, action, method = 'POST') {
