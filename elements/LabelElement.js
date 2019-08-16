@@ -1,8 +1,7 @@
 export default class LabelElement extends HTMLLabelElement {
-    constructor(id, name) {
+    constructor(isFor) {
         super();
-        this.id = id;
-        this.name = name;
+        this.for = isFor;
     }
 
     setClass(className) {
