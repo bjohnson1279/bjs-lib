@@ -15,6 +15,14 @@ export default class CustomElement extends HTMLElement {
     setText(txt) {
         this.textContent = txt;
     }
+
+    setClass(className) {
+        this.addClassName(className);
+    }
+
+    removeClass(className) {
+        this.removeClassName(className);
+    }
 }
 
 customElements.define('custom-elm', CustomElement);

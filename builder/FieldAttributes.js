@@ -23,6 +23,7 @@ export class FieldAttributes {
         if (!this.validTypes.includes(this.type)) {
             return new Error(`Invalid field type ${this.type}`);
         }
+
         if (this.numericTypes.includes(this.type)) {
             if (Number.isNaN(this.value)) {
                 return new Error(`Invalid value ${this.value} for type ${this.type}`);
@@ -37,6 +38,19 @@ export class FieldAttributes {
                     break;
             }
         }
+        else {
+            // Non-numeric types
+            switch (this.type) {
+                case 'string':
+                    break;
+                case 'boolean':
+                    this.value = Boolean(this.value);
+                    break;
+                case 'date':
+                    this.value = new Date(this.value);
+                    break;
+            }
+        }
     }
 
     set inputFieldType(type) {
@@ -44,7 +58,7 @@ export class FieldAttributes {
             this.inputField = type;
         } 
         else {
-            return new Error('Invalid input type');
+            return new Error(`Invalid input type ${type}`);
         }
     }
 
