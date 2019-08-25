@@ -1,6 +1,7 @@
 export class CanvasElement extends HTMLCanvasElement {
-    constructor() {
-        //
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
     }
 
     setClass(className) {

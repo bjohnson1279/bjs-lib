@@ -1,5 +1,5 @@
 export class OptGroupElement extends HTMLOptGroupElement {
-    constructor() {
-        //
+    constructor(label = '') {
+        this.label = label;
     }
 }

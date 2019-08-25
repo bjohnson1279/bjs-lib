@@ -21,7 +21,12 @@ export default class CustomElement extends HTMLElement {
     }
 
     removeClass(className) {
-        this.removeClassName(className);
+        if (this.classList.contains(className))
+            this.removeClassName(className);
+    }
+
+    classExists(className) {
+        return (this.classList.contains(className));
     }
 }
 
