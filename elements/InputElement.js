@@ -7,6 +7,22 @@ export default class InputElement extends HTMLInputElement {
         this.value = val;
     }
 
+    set inputId(id) {
+        this.id = id;
+    }
+
+    set inputName(name) {
+        this.name = name;
+    }
+
+    set inputType(type) {
+        this.type = type;
+    }
+
+    set inputValue(value) {
+        this.value = value;
+    }
+
     setClass(className) {
         this.addClassName(className);
     }

@@ -40,15 +40,20 @@ export class FieldAttributes {
         }
         else {
             // Non-numeric types
-            switch (this.type) {
-                case 'string':
-                    break;
-                case 'boolean':
-                    this.value = Boolean(this.value);
-                    break;
-                case 'date':
-                    this.value = new Date(this.value);
-                    break;
+            try {
+                switch (this.type) {
+                    case 'string':
+                        break;
+                    case 'boolean':
+                        this.value = Boolean(this.value);
+                        break;
+                    case 'date':
+                        this.value = new Date(this.value);
+                        break;
+                }
+            }
+            catch (exception) {
+                throw new Exception(`Invalid type ${type} for ${this.value}`);
             }
         }
     }

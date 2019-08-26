@@ -30,7 +30,7 @@ export class XHR extends XMLHttpRequest {
             this._headers.set(name, val);
         }
         else {
-            const error = new Error('Invalid header type');
+            const error = new Error(`Invalid header type ${name}`);
             error.statusCode = 400;
             throw error;
         }
