@@ -24,7 +24,11 @@ export default class ReportBuilder {
     build(id) {
         const reportContainer = new DivElement(id);
         this.dataRows.forEach( (dataRow) => {
-            //
+            let row = this.addNewRow();
+            let cellCollection = new HTMLCollection();
+            this.fields.forEach( (field) => {
+                let cell = this.addNewCell();
+            });
         });
     }
 }

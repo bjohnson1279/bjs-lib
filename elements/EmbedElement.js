@@ -24,7 +24,7 @@ export class EmbedElement extends HTMLEmbedElement {
             this.width = width;
         }
         else {
-            const widthError = new Error('Invalid value for width');
+            const widthError = new Error(`Invalid value for width ${width}`);
             widthError.status = 400;
             return widthError;
         }

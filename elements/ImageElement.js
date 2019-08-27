@@ -33,7 +33,7 @@ export class ImageElement extends HTMLImageElement {
         this.src = src;
     }
 
-    set imgClass(className) {
+    addClass(className) {
         this.addClassName(className);
     }
 

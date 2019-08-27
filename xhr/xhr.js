@@ -8,6 +8,10 @@ export class XHR extends XMLHttpRequest {
         this._formData = new FormData();
     }
 
+    set xhrMethod(method) {
+        this._method = method;
+    }
+
     set requestData(reqData) {
         this._reqData = reqData;
     }
@@ -71,7 +75,7 @@ export class XHR extends XMLHttpRequest {
         const res = fetch(this._url, params)
             .then(response => {
                 console.log({ response });
-                this.responseData(response);
+                this._responseData(response);
             })
             .catch( (error) => console.error(error));
     }

@@ -4,6 +4,14 @@ export class CanvasElement extends HTMLCanvasElement {
         this.width = width;
     }
 
+    set canvasHeight(height) {
+        this.height = height;
+    }
+
+    set canvasWidth(width) {
+        this.width = width;
+    }
+
     setClass(className) {
         this.addClassName(className);
     }
