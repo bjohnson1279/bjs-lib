@@ -2,6 +2,7 @@ import FieldAttributes from ('./FieldAttributes.js');
 import DivElement from "../elements/DivElement";
 import TableRowElement from "../elements/TableRowElement";
 import TableCellElement from "../elements/TableCellElement";
+import TableElement from "../elements/TableElement";
 
 export default class ReportBuilder {
     constructor() {
@@ -10,7 +11,8 @@ export default class ReportBuilder {
     }
 
     addNewField(name, value) {
-        return new FieldAttributes(name, value);
+        const fieldAttributes = new FieldAttributes(name, value);
+        return fieldAttributes;
     }
 
     addNewRow() {
@@ -23,12 +25,18 @@ export default class ReportBuilder {
 
     build(id) {
         const reportContainer = new DivElement(id);
+        const reportTable = new TableElement();
         this.dataRows.forEach( (dataRow) => {
             let row = this.addNewRow();
             let cellCollection = new HTMLCollection();
             this.fields.forEach( (field) => {
                 let cell = this.addNewCell();
+                cell.textContent = dataRow[field];
+                cellCollection.appendChild(cell);
             });
+            row.appendChild(cellCollection);
+            reportTable.appendChild(row);
         });
+        reportContainer.appendChild(reportTable);
     }
 }
