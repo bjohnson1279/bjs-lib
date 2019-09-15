@@ -47,6 +47,27 @@ export const volumeRectangle = (length, width, height) => {
     return false;
 };
 
+export const volumeSphere = (radius) => {
+    if (isNumeric(radius)) {
+        return (radius * Math.pi); // TODO : get volume calculation
+    }
+    return false;
+}
+
+export const volumeCone = (radius, height) => {
+    if (isNumeric(radius) && isNumeric(height)) {
+        return (radius * Math.pi); // TODO : get height calculation
+    }
+    return false;
+}
+
+export const volumeCylinder = (radius, height) => {
+    if (isNumeric(radius) && isNumeric(height)) {
+        return (radius * Math.pi); // TODO : get height calculation
+    }
+    return false;
+}
+
 export const circumference = (radius) => {
     if (isNumeric(radius)) {
         return radius * Math.PI;
