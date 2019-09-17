@@ -97,7 +97,12 @@ export class XHR extends XMLHttpRequest {
         const res = fetch(this._url, params)
             .then(response => {
                 console.log({ response });
-                this._responseData(response);
+                if (response.ok) {
+                    this._responseData(response);
+                }
+                else {
+                    console.error(`{response.status} {response.statusText}`);
+                }
             })
             .catch( (error) => console.error(error) );
     }
