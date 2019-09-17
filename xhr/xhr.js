@@ -95,9 +95,27 @@ export class XHR extends XMLHttpRequest {
         };
 
         const res = fetch(this._url, params)
-            .then(response => {
+            .then( (response) => {
                 console.log({ response });
                 if (response.ok) {
+                    const { type, body } = response;
+                    switch (type) {
+                        case 'basic':
+                            break;
+                        case 'cors':
+                            break;
+                        case 'error':
+                            break;
+                        case 'opaque':
+                            break;
+                        case 'opaqueredirect':
+                            break;
+                        default:
+                            break;
+                    }
+
+                    const reader = body.getReader();
+                    console.log({ reader });
                     this._responseData(response);
                 }
                 else {
@@ -105,6 +123,7 @@ export class XHR extends XMLHttpRequest {
                 }
             })
             .catch( (error) => console.error(error) );
+        console.log({ res });
     }
 
     validateParams() {
