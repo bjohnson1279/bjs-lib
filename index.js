@@ -9,11 +9,13 @@ import InputElement from './elements/InputElement.js';
 import SelectElement from './elements/SelectElement.js';
 import OptionElement from './elements/OptionElement.js';
 import ButtonElement from './elements/ButtonElement.js';
+import XHR from './xhr/xhr.js';
 import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js';
 
 // console.log({ STATES });
 // console.log({ CANADA_PROVINCES });
 // console.log({ MEXICO_PROVINCES });
+console.log(XHR);
 
 function $(x) { return document.querySelector(x); } 
 
@@ -165,4 +167,8 @@ window.addEventListener('load', () => {
     // console.log({ mainDivForm });
     // console.log({ mainDivTable });
     console.log({ custom });
+
+    const xhr = new XHR('GET', 'json');
+    xhr.setUrl('./exports/states.js');
+    xhr.exec();
 });

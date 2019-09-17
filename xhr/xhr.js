@@ -1,14 +1,13 @@
-export class XHR extends XMLHttpRequest {
+export default class XHR extends XMLHttpRequest {
     // Wrapper class for XMLHttpRequest
     constructor(method = 'GET', resType = 'innerHTML') {
         super();
         this._method = method;
         this._cache = 'no-cache';
         this._responseType = resType;
+        this._credentials = 'same-origin';
         this._headers = new Headers();
         this._formData = new FormData();
-        this._request = new Request();
-        this._response = new Response();
 
         this.validTypes = [
             'Cache-Control',
@@ -34,15 +33,15 @@ export class XHR extends XMLHttpRequest {
         ];
     }
 
-    set requestData(reqData) {
+    setRequestData(reqData) {
         this._reqData = reqData;
     }
 
-    set responseType(resType) {
+    setResponseType(resType) {
         this._responseType = resType;
     }
 
-    set headers(name, val) {
+    setHeaders(name, val) {
         if (this.validTypes.includes(name)) {
             this._headers.set(name, val);
         }
@@ -53,16 +52,16 @@ export class XHR extends XMLHttpRequest {
         }
     }
 
-    set formDataElem(sel) {
+    setFormDataElem(sel) {
         const elem = document.querySelector(sel);
         this._formData.set(elem.name, elem.value);
     }
 
-    set formData(name, val) {
+    setFormData(name, val) {
         this._formData.set(name, val);
     }
 
-    set method(method) {
+    setMethod(method) {
         if (this.validMethods.includes(method)) {
             this._method = method;
         }
@@ -73,19 +72,19 @@ export class XHR extends XMLHttpRequest {
         }
     }
 
-    set url(url) {
+    setUrl(url) {
         this._url = url;
     }
 
-    get responseData() {
+    getResponseData() {
         return this._responseData;
     }
 
-    set responseData(responseData) {
+    setResponseData(responseData) {
         this._responseData = responseData;
     }
 
-    exec() {
+    async exec() {
         this.validateParams();
 
         let params = {
@@ -94,11 +93,12 @@ export class XHR extends XMLHttpRequest {
             headers: this._headers,
         };
 
-        const res = fetch(this._url, params)
+        const res = await fetch(this._url, params)
             .then( (response) => {
                 console.log({ response });
                 if (response.ok) {
                     const { type, body } = response;
+                    console.log({ type, body });
                     switch (type) {
                         case 'basic':
                             break;
@@ -116,7 +116,14 @@ export class XHR extends XMLHttpRequest {
 
                     const reader = body.getReader();
                     console.log({ reader });
-                    this._responseData(response);
+                    reader.read().then(({ done, value}) => {
+                        if (done) {
+                            console.log({ done });
+                            return;
+                        }
+                        console.log({ value });
+                    });
+                    this.setResponseData(response);
                 }
                 else {
                     console.error(`{response.status} {response.statusText}`);
