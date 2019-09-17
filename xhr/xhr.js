@@ -3,13 +3,35 @@ export class XHR extends XMLHttpRequest {
     constructor(method = 'GET', resType = 'innerHTML') {
         super();
         this._method = method;
+        this._cache = 'no-cache';
         this._responseType = resType;
         this._headers = new Headers();
         this._formData = new FormData();
-    }
+        this._request = new Request();
+        this._response = new Response();
 
-    set xhrMethod(method) {
-        this._method = method;
+        this.validTypes = [
+            'Cache-Control',
+            'Content-Language',
+            'Content-Type',
+            'Expires',
+            'Last-Modified',
+            'Pragma',
+        ];
+
+        this.validMethods = [
+            'GET',
+            'POST',
+            'PUT',
+            'PATCH',
+            'DELETE',
+        ];
+
+        this.validResponseTypes = [
+            'innerHTML',
+            'JSON',
+            'XML',
+        ];
     }
 
     set requestData(reqData) {
@@ -21,16 +43,7 @@ export class XHR extends XMLHttpRequest {
     }
 
     set headers(name, val) {
-        const validTypes = [
-            'Cache-Control',
-            'Content-Language',
-            'Content-Type',
-            'Expires',
-            'Last-Modified',
-            'Pragma',
-        ];
-
-        if (validTypes.includes(name)) {
+        if (this.validTypes.includes(name)) {
             this._headers.set(name, val);
         }
         else {
@@ -50,7 +63,14 @@ export class XHR extends XMLHttpRequest {
     }
 
     set method(method) {
-        this._method = method;
+        if (this.validMethods.includes(method)) {
+            this._method = method;
+        }
+        else {
+            const error = new Error(`Invalid method type ${method}`);
+            error.statusCode = 400;
+            throw error;
+        }
     }
 
     set url(url) {
@@ -66,9 +86,11 @@ export class XHR extends XMLHttpRequest {
     }
 
     exec() {
+        this.validateParams();
+
         let params = {
             method: this._method,
-            cache: 'no-cache',
+            cache: this._cache,
             headers: this._headers,
         };
 
@@ -77,6 +99,21 @@ export class XHR extends XMLHttpRequest {
                 console.log({ response });
                 this._responseData(response);
             })
-            .catch( (error) => console.error(error));
+            .catch( (error) => console.error(error) );
+    }
+
+    validateParams() {
+        if (!this.validMethods.includes(this._method)) {
+            throw new Exception(`Invalid HTTP Request Method ${this._method}`);
+        }
+
+        this._headers.forEach( (header) => {
+            if (!this.validTypes.includes(header)) {
+                throw new Exception(`Invalid header ${header}`);
+            }
+        });
+
+
+        return true;
     }
 }
