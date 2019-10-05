@@ -127,10 +127,12 @@ export default class XHR extends XMLHttpRequest {
                 }
                 else {
                     console.error(`{response.status} {response.statusText}`);
+                    // response.reject(`{response.status} {response.statusText}`);
                 }
             })
             .catch( (error) => console.error(error) );
         console.log({ res });
+        console.log('responseData', this._responseData);
     }
 
     validateParams() {

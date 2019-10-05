@@ -28,7 +28,15 @@ export default class FormElement extends HTMLFormElement {
             enctypeError.status = 400;
             return enctypeError;
         }
-    }    
+    }
+
+    getElements() {
+        return this.elements;
+    }
+
+    getLength() {
+        return this.length;
+    }
 }
 
 customElements.define('custom-form', FormElement, { extends: 'form' });
