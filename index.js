@@ -150,15 +150,19 @@ window.addEventListener('load', () => {
     mainDiv.appendChild(mainDivHeaderTxt);
     mainDiv.appendChild(mainDivBody);
     body.appendChild(mainDiv);
-
+    
     mainDivForm.onsubmit = (e) => {
         e.preventDefault();
     }
 
     mainDivFormSubmit.onclick = (e) => {
         // TODO : serialize form data inputs to JSON format
+        console.log(mainDivForm);
         let formdata = new FormData(mainDivForm);
+        let elements = formdata.elements;
         console.log({ formdata });
+        console.log({ elements });
+        formdata.forEach(el => console.log({ el }));
     };
 
     console.log({ mainDiv });

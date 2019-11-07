@@ -31,6 +31,7 @@ export default class FormElement extends HTMLFormElement {
     }
 
     getElements() {
+        console.log('getElements');
         return this.elements;
     }
 
