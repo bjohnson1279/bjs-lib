@@ -58,8 +58,7 @@ export default class XHR extends XMLHttpRequest {
     }
 
     serializeFormData() {
-        console.log('typeof formData', typeof this._formData);
-        if (typeof this._formData === 'FormData') {
+        if (typeof this._formData === 'object' && typeof this._formData.entries === 'function') {
             for (const entry of this._formData.entries()) {
                 this._params[entry[0]] = entry[1];
             }

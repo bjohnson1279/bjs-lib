@@ -154,6 +154,7 @@ window.addEventListener('load', () => {
         const formXHR = new XHR('POST', 'json');
         formXHR.setFormData = mainDivForm;
         formXHR.serializeFormData();
+        formXHR.setUrl('./index.html');
         formXHR.exec();
     };
 
