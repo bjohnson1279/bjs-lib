@@ -158,9 +158,12 @@ window.addEventListener('load', () => {
         const formdata = new FormData(mainDivForm);
 
         const entries = formdata.entries();
+        let formValues = {};
         for (const entry of entries) {
             console.log({ entry });
+            formValues[entry[0]] = entry[1];
         }
+        console.log({ formValues });
 
         const keys = formdata.keys();
         for (const key of keys) {
