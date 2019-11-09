@@ -1,7 +1,7 @@
 export default class SelectElement extends HTMLSelectElement {
     constructor(id, name = '', val = '') {
         super();
-        this.name = name;
+        this.name = name != '' ? name : id;
         this.value = val;
         this.id = id;
     }
