@@ -156,13 +156,26 @@ window.addEventListener('load', () => {
         const elements = mainDivForm.elements;
         console.log({ elements });
         const formdata = new FormData(mainDivForm);
+
         const entries = formdata.entries();
+        for (entry of entries) {
+            console.log({ entry });
+        }
+
         const keys = formdata.keys();
+        for (key of keys) {
+            console.log({ key });
+        }
+
         const values = formdata.values();
+        for (value of values) {
+            console.log({ values });
+        }
+
         console.log({ formdata });
-        console.log({ entries });
-        console.log({ keys });
-        console.log({ values });
+        // console.log({ entries });
+        // console.log({ keys });
+        // console.log({ values });
         formdata.forEach(el => console.log({ el }));
     };
 
