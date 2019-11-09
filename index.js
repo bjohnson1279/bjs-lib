@@ -152,7 +152,7 @@ window.addEventListener('load', () => {
     mainDivFormSubmit.onclick = (e) => {
         // Serialize form data inputs to object
         const formXHR = new XHR('POST', 'json');
-        formXHR.setFormData = mainDivForm;
+        formXHR.setFormData(mainDivForm);
         formXHR.serializeFormData();
         formXHR.setUrl('./index.html');
         formXHR.exec();
