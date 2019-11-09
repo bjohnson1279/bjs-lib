@@ -169,7 +169,7 @@ window.addEventListener('load', () => {
 
         const values = formdata.values();
         for (const value of values) {
-            console.log({ values });
+            console.log({ value });
         }
 
         console.log({ formdata });
