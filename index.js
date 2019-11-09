@@ -154,9 +154,9 @@ window.addEventListener('load', () => {
         console.log('onclick');
         console.log({ mainDivForm });
         let formdata = new FormData(mainDivForm);
-        // let elements = formdata.elements;
+        let elements = formdata.elements;
         console.log({ formdata });
-        // console.log({ elements });
+        console.log({ elements });
         formdata.forEach(el => console.log({ el }));
     };
 
