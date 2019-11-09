@@ -64,6 +64,7 @@ export default class XHR extends XMLHttpRequest {
                 this._params[entry[0]] = entry[1];
             }
         }
+        console.log('this params', this._params);
     }
 
     setMethod(method) {
