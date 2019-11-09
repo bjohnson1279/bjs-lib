@@ -85,6 +85,7 @@ export default class XHR extends XMLHttpRequest {
     }
 
     async exec() {
+        console.log('xhr.exec');
         this.validateParams();
 
         let params = {

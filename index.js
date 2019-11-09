@@ -12,15 +12,9 @@ import ButtonElement from './elements/ButtonElement.js';
 import XHR from './xhr/xhr.js';
 import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js';
 
-// console.log({ STATES });
-// console.log({ CANADA_PROVINCES });
-// console.log({ MEXICO_PROVINCES });
-// console.log(XHR);
-
 function $(x) { return document.querySelector(x); } 
 
 const body = document.getElementsByTagName('body')[0];
-console.log({ body });
 
 window.addEventListener('load', () => {
     // Load body content here
@@ -157,22 +151,17 @@ window.addEventListener('load', () => {
 
     mainDivFormSubmit.onclick = (e) => {
         // TODO : serialize form data inputs to JSON format
-        console.log(mainDivForm);
+        console.log('onclick');
+        console.log({ mainDivForm });
         let formdata = new FormData(mainDivForm);
-        let elements = formdata.elements;
+        // let elements = formdata.elements;
         console.log({ formdata });
-        console.log({ elements });
+        // console.log({ elements });
         formdata.forEach(el => console.log({ el }));
     };
-
-    console.log({ mainDiv });
-    // console.log({ mainDivHeaderTxt });
-    console.log({ mainDivBody });
-    // console.log({ mainDivForm });
-    // console.log({ mainDivTable });
-    console.log({ custom });
 
     const xhr = new XHR('GET', 'json');
     xhr.setUrl('./exports/states.js');
     xhr.exec();
+    console.log({ xhr });
 });
