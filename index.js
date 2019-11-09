@@ -153,10 +153,16 @@ window.addEventListener('load', () => {
         // TODO : serialize form data inputs to JSON format
         console.log('onclick');
         console.log({ mainDivForm });
-        let formdata = new FormData(mainDivForm);
-        let elements = formdata.getAll();
+        const formdata = new FormData(mainDivForm);
+        const entries = formdata.entries();
+        const arrayValues = formdata.getAll();
+        const keys = formdata.keys();
+        const values = formdata.values();
         console.log({ formdata });
-        console.log({ elements });
+        console.log({ entries });
+        console.log({ arrayValues });
+        console.log({ keys });
+        console.log({ values });
         formdata.forEach(el => console.log({ el }));
     };
 
