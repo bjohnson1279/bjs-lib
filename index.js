@@ -15,7 +15,7 @@ import { STATES, CANADA_PROVINCES, MEXICO_PROVINCES } from './exports/states.js'
 // console.log({ STATES });
 // console.log({ CANADA_PROVINCES });
 // console.log({ MEXICO_PROVINCES });
-console.log(XHR);
+// console.log(XHR);
 
 function $(x) { return document.querySelector(x); } 
 
