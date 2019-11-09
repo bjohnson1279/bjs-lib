@@ -98,6 +98,7 @@ export default class XHR extends XMLHttpRequest {
             headers: this._headers,
             ...this._params,
         };
+        console.log({ params });
 
         const res = await fetch(this._url, params)
             .then( (response) => {
