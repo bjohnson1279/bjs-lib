@@ -132,7 +132,7 @@ export default class XHR extends XMLHttpRequest {
                     this.setResponseData(response);
                 }
                 else {
-                    console.error(`{response.status} {response.statusText}`);
+                    console.error(`${response.status} ${response.statusText}`);
                     // response.reject(`{response.status} {response.statusText}`);
                 }
             })
