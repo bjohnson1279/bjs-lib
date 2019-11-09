@@ -62,6 +62,10 @@ export default class XHR extends XMLHttpRequest {
             for (const [key,value] of this._formData.entries()) {
                 this._params[key] = value;
             }
+        } else {
+            const error = new Error(`FormData not configured`);
+            error.statusCode = 400;
+            throw error;
         }
     }
 
