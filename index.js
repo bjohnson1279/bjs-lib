@@ -161,7 +161,7 @@ window.addEventListener('load', () => {
     };
 
     const xhr = new XHR('GET', 'json');
-    xhr.setUrl('./exports/states.js');
+    xhr.setUrl('./exports/states.json');
     xhr.exec();
     console.log({ xhr });
 });
