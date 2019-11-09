@@ -54,6 +54,7 @@ export default class XHR extends XMLHttpRequest {
     }
 
     setFormData(form) {
+        console.log({ form });
         this._formData = new FormData(form);
     }
 
