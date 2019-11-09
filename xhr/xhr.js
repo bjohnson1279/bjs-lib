@@ -61,7 +61,9 @@ export default class XHR extends XMLHttpRequest {
         console.log('entries', typeof this._formData.entries);
         if (typeof this._formData === 'object' && typeof this._formData.entries === 'function') {
             console.log('inside if');
-            for (const entry of this._formData.entries()) {
+            const entries = this._formData.entries();
+            console.log({ entries });
+            for (const entry of entries) {
                 console.log({ entry });
                 this._params[entry[0]] = entry[1];
             }
