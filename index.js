@@ -150,36 +150,11 @@ window.addEventListener('load', () => {
     }
 
     mainDivFormSubmit.onclick = (e) => {
-        // TODO : serialize form data inputs to JSON format
-        console.log('onclick');
-        console.log({ mainDivForm });
-        const elements = mainDivForm.elements;
-        console.log({ elements });
-        const formdata = new FormData(mainDivForm);
-
-        const entries = formdata.entries();
-        let formValues = {};
-        for (const entry of entries) {
-            console.log({ entry });
-            formValues[entry[0]] = entry[1];
-        }
-        console.log({ formValues });
-
-        const keys = formdata.keys();
-        for (const key of keys) {
-            console.log({ key });
-        }
-
-        const values = formdata.values();
-        for (const value of values) {
-            console.log({ value });
-        }
-
-        console.log({ formdata });
-        // console.log({ entries });
-        // console.log({ keys });
-        // console.log({ values });
-        formdata.forEach(el => console.log({ el }));
+        // Serialize form data inputs to object
+        const formXHR = new XHR('POST', 'json');
+        formXHR.setFormData = mainDivForm;
+        formXHR.serializeFormData();
+        formXHR.exec();
     };
 
     const xhr = new XHR('GET', 'json');

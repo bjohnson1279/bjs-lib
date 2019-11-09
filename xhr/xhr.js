@@ -8,6 +8,7 @@ export default class XHR extends XMLHttpRequest {
         this._credentials = 'same-origin';
         this._headers = new Headers();
         this._formData = new FormData();
+        this._params = {}
 
         this.validTypes = [
             'Cache-Control',
@@ -52,13 +53,17 @@ export default class XHR extends XMLHttpRequest {
         }
     }
 
-    setFormDataElem(sel) {
-        const elem = document.querySelector(sel);
-        this._formData.set(elem.name, elem.value);
+    setFormData(form) {
+        this._formData = new FormData(form);
     }
 
-    setFormData(name, val) {
-        this._formData.set(name, val);
+    serializeFormData() {
+        console.log('typeof formData', typeof this._formData);
+        if (typeof this._formData === 'FormData') {
+            for (const entry of this._formData.entries()) {
+                this._params[entry[0]] = entry[1];
+            }
+        }
     }
 
     setMethod(method) {
@@ -92,6 +97,7 @@ export default class XHR extends XMLHttpRequest {
             method: this._method,
             cache: this._cache,
             headers: this._headers,
+            ...this._params,
         };
 
         const res = await fetch(this._url, params)
