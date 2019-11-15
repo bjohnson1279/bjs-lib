@@ -1,5 +1,5 @@
 export default class XHR extends XMLHttpRequest {
-    // Wrapper class for XMLHttpRequest
+    // Wrapper class for Fetch API
     constructor(method = 'GET', resType = 'innerHTML') {
         super();
         this._method = method;
@@ -93,7 +93,6 @@ export default class XHR extends XMLHttpRequest {
     }
 
     async exec() {
-        console.log('xhr.exec');
         this.validateParams();
 
         let params = {
@@ -102,14 +101,11 @@ export default class XHR extends XMLHttpRequest {
             headers: this._headers,
             ...this._params,
         };
-        console.log({ params });
 
         const res = await fetch(this._url, params)
             .then( (response) => {
-                console.log({ response });
                 if (response.ok) {
                     const { type, body } = response;
-                    console.log({ type, body });
                     switch (type) {
                         case 'basic':
                             break;
@@ -126,24 +122,18 @@ export default class XHR extends XMLHttpRequest {
                     }
 
                     const reader = body.getReader();
-                    console.log({ reader });
                     reader.read().then(({ done, value}) => {
                         if (done) {
-                            console.log({ done });
                             return;
                         }
-                        console.log({ value });
                     });
                     this.setResponseData(response);
                 }
                 else {
-                    console.error(`${response.status} ${response.statusText}`);
                     // response.reject(`{response.status} {response.statusText}`);
                 }
             })
             .catch( (error) => console.error(error) );
-        console.log({ res });
-        console.log('responseData', this._responseData);
     }
 
     validateParams() {
@@ -156,7 +146,6 @@ export default class XHR extends XMLHttpRequest {
                 throw new Exception(`Invalid header ${header}`);
             }
         });
-
 
         return true;
     }
