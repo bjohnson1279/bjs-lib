@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
     const mainDivBody = new DivElement('mainDivBody');
     const mainDivHeaderTxt = new SpanElement('headerTxt');
     const mainDivBodyTxt = new SpanElement('bodyTxt');
-    const custom = new CustomElement('customElement');
+    // const custom = new CustomElement('customElement');
     const mainDivForm = new FormElement('mainDivForm');
     const mainDivTable = new TableElement('mainDivTable');
 

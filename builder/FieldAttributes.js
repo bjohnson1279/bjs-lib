@@ -16,7 +16,15 @@ export class FieldAttributes {
         this.decimal = false;
         this.dollar = false;
         this.group = false;
+    }
 
+    buildInput() {
+        switch (this.inputField) {
+            case 'input':
+                break;
+            case 'select':
+                break;
+        }
     }
 
     isValid() {
