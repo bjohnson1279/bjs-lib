@@ -7,7 +7,22 @@ import TableElement from "../elements/TableElement";
 export default class ReportBuilder {
     constructor() {
         this.fields = [];
+        this.fieldClasses = {};
         this.dataRows = [];
+    }
+
+    addFieldClass(fieldName, className) {
+        if (this.fields.includes(fieldName)) {
+            if (!this.fieldClasses.hasOwnProperty(fieldName)) {
+                Object.defineProperty(this.fieldClasses, fieldName, [className]);
+            }
+            else {
+                this.fieldClasses[fieldName].push(className);
+            }
+        }
+        else {
+            console.error(`Field ${fieldName} not found`);
+        }
     }
 
     addNewField(name, value) {
@@ -26,6 +41,7 @@ export default class ReportBuilder {
     build(id) {
         const reportContainer = new DivElement(id);
         const reportTable = new TableElement();
+
         this.dataRows.forEach( (dataRow) => {
             let row = this.addNewRow();
             let cellCollection = new HTMLCollection();
