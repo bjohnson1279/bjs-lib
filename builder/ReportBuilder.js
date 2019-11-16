@@ -39,10 +39,4 @@ export default class ReportBuilder {
         });
         reportContainer.appendChild(reportTable);
     }
-
-    filterColumns(fields) {
-        this.dataRows = this.dataRows.map( (row) => {
-            // fields.forEach(field => {});
-        });
-    }
 }
