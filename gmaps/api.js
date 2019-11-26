@@ -9,10 +9,10 @@ import MAP_CONSTANTS from './constants';
 export default class GMapsAPI {
     constructor() {
         this._api_key = MAP_CONSTANTS.GMAPS_API_KEY;
+        this.lat = MAP_CONSTANTS.DEFAULT_LATITUDE;
+        this.lng = MAP_CONSTANTS.DEFAULT_LONGITUDE;
+        this.zoom = MAP_CONSTANTS.DEFAULT_ZOOM;
         this.mapNode = null;
-        this.lat = -34.397;
-        this.lng = 150.644;
-        this.zoom = 8;
     }
 
     setNodeById(nodeId) {

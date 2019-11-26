@@ -8,7 +8,7 @@ export default class XHR extends XMLHttpRequest {
         this._credentials = 'same-origin';
         this._headers = new Headers();
         this._formData = new FormData();
-        this._params = {}
+        this._params = {};
 
         this.validTypes = [
             'Cache-Control',
